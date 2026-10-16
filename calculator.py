@@ -30,8 +30,8 @@ def predict_vram(ctx, weights, layers, kv_heads, head_dim, overhead):
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--model", default="llama3.2:3b")
-    p.add_argument("--ctx", type=int, default=4096)
+    p.add_argument("--context-length", type=int, default=4096)
     p.add_argument("--overhead", type=float, default=70)
     a = p.parse_args()
     weights, layers, kv_heads, head_dim = model_specs(a.model)
-    print(round(predict_vram(a.ctx, weights, layers, kv_heads, head_dim, a.overhead)))
+    print(round(predict_vram(a.context_length, weights, layers, kv_heads, head_dim, a.overhead)))
